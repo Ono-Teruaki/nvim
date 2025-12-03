@@ -26,5 +26,6 @@ keymap("v", "<", "<gv", opts)
 keymap("v", "J", ":m '<+1<CR>gv=gv", opts) 
 keymap("v", "K", ":m '>-2<CR>gv=gv", opts) 
 
-
+-- <C-n> でファイラを左側に開閉する (Explore)
+vim.keymap.set("n", "<C-n>", ":Lexplore<CR>", { silent = true })
 

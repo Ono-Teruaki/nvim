@@ -23,4 +23,10 @@ opt.showcmd = true
 
 -- 反映時間の短縮
 opt.updatetime = 250
-opt.timeoutlen = 250
+opt.timeoutlen = 400
+
+-- Netrwの設定 (標準ファイラ)
+vim.g.netrw_banner = 0    -- 上部のバナー(使い方の説明)を消す
+vim.g.netrw_liststyle = 3 -- ツリー形式で表示する (デフォルトはただのリスト)
+vim.g.netrw_winsize = 18  -- :Vexplore で開くときの幅を18%にする
+vim.g.netrw_keepdir = 0
