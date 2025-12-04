@@ -1,4 +1,3 @@
--- lua/plugins/lsp.lua
 return {
   {
     "neovim/nvim-lspconfig",
@@ -11,6 +10,7 @@ return {
       require("mason").setup()
 
       -- 2. lspconfigの読み込み
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
 
       -- 3. Mason-LSPConfigの設定 (ここを修正)
@@ -23,8 +23,7 @@ return {
           "html", 
           "cssls"
         },
-        
-        -- 【修正点】setup_handlers関数を使わず、ここに handlers テーブルを書く
+
         handlers = {
           -- (1) デフォルトハンドラ: すべてのサーバーをデフォルト設定で起動
           function(server_name)
@@ -34,6 +33,7 @@ return {
           -- (2) Lua専用設定 (個別設定)
           ["lua_ls"] = function()
             lspconfig.lua_ls.setup({
+              capabilities = capabilities,
               settings = {
                 Lua = {
                   diagnostics = { globals = { "vim" } },
@@ -50,7 +50,6 @@ return {
         callback = function(ev)
           local opts = { buffer = ev.buf }
           
-          -- 定義ジャンプなど
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, opts)
