@@ -20,6 +20,7 @@ opt.wrap = true
 -- ビジュアル設定
 opt.showmode = false
 opt.showcmd = true
+opt.termguicolors = true
 
 -- 反映時間の短縮
 opt.updatetime = 250
