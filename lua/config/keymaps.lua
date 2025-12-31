@@ -15,7 +15,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- 検索ハイライトの削除
-keymap("n", "<Esc><Esc>", ":mohlsearch<CR>", opts)
+keymap("n", "<Esc><Esc>", ":nohlsearch<CR>", opts)
 
 -- インデント操作の改善
 keymap("v", ">", ">gv", opts)

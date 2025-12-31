@@ -5,5 +5,12 @@ return {
         'nvim-lua/plenary.nvim',
         'kyazdani42/nvim-web-devicons', -- ファイルアイコン用（オプション）
         'MunifTanjim/nui.nvim',
-    }
+    },
+    config = function()
+        require("neo-tree").setup({
+            window = {
+                width = 35
+            }
+        })
+    end
 }
