@@ -15,7 +15,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- 検索ハイライトの削除
-keymap("n", "<Esc>", ":mohlsearch<CR>", opts)
+keymap("n", "<Esc><Esc>", ":mohlsearch<CR>", opts)
 
 -- インデント操作の改善
 keymap("v", ">", ">gv", opts)
@@ -23,9 +23,8 @@ keymap("v", "<", "<gv", opts)
 
 -- 行の移動
 
-keymap("v", "J", ":m '<+1<CR>gv=gv", opts) 
-keymap("v", "K", ":m '>-2<CR>gv=gv", opts) 
+keymap("v", "J", ":m '<+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '>-2<CR>gv=gv", opts)
 
 -- <C-n> でファイラを左側に開閉する (Explore)
-vim.keymap.set("n", "<C-n>", ":Lexplore<CR>", { silent = true })
-
+vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left toggle<CR>", { silent = true })
