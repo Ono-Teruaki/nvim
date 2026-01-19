@@ -23,7 +23,3 @@ keymap("v", "<", "<gv", opts)
 
 -- <C-n> でファイラを左側に開閉する (Explore)
 vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left toggle<CR>", { silent = true })
-
--- diffview-nvim
-keymap("n", "<leader>dv", "<cmd>DiffviewOpen<CR>", opts)
-keymap("n", "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", opts)
