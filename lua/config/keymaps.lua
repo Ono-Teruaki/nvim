@@ -21,10 +21,9 @@ keymap("n", "<Esc><Esc>", ":nohlsearch<CR>", opts)
 keymap("v", ">", ">gv", opts)
 keymap("v", "<", "<gv", opts)
 
--- 行の移動
-
-keymap("v", "J", ":m '<+1<CR>gv=gv", opts)
-keymap("v", "K", ":m '>-2<CR>gv=gv", opts)
-
 -- <C-n> でファイラを左側に開閉する (Explore)
 vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left toggle<CR>", { silent = true })
+
+-- diffview-nvim
+keymap("n", "<leader>dv", "<cmd>DiffviewOpen<CR>", opts)
+keymap("n", "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", opts)
