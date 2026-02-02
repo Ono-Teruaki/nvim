@@ -68,8 +68,9 @@ return {
                     },
                 },
             },
-            neovim_install_script_path = "",
-            client_callback = function(port, workspace_config) end,
+            ---@diagnostic disable-next-line: assign-type-mismatch
+            neovim_install_script_path = nil,
+            client_callback = nil,
             progress_view = { type = "popup" },
             offline_mode = {
                 enabled = false,
