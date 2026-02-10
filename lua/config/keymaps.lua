@@ -86,3 +86,27 @@ submode('n', '<C-w>', {
     { 'k', '<C-w>-' },
     { 'l', '<C-w>>' },
 })
+
+-- VS Code Neovim Integration
+if vim.g.vscode then
+    local vscode = require("vscode-neovim")
+
+    -- Explorer Toggle (<C-n>)
+    vim.keymap.set({"n", "v"}, "<C-n>", function()
+        vscode.action("workbench.action.toggleSidebarVisibility")
+    end)
+
+    -- Terminal Toggle (<C-t>)
+    vim.keymap.set({"n", "v"}, "<C-t>", function()
+        vscode.action("workbench.action.terminal.toggleTerminal")
+    end)
+
+    -- Window Navigation (<C-h/j/k/l>)
+    vim.keymap.set({"n", "x"}, "<C-h>", function() vscode.action("workbench.action.navigateLeft") end)
+    vim.keymap.set({"n", "x"}, "<C-j>", function() vscode.action("workbench.action.navigateDown") end)
+    vim.keymap.set({"n", "x"}, "<C-k>", function() vscode.action("workbench.action.navigateUp") end)
+    vim.keymap.set({"n", "x"}, "<C-l>", function() vscode.action("workbench.action.navigateRight") end)
+
+    -- Comment Toggle (gcc)
+    vim.keymap.set({"n", "x"}, "gcc", function() vscode.action("editor.action.commentLine") end)
+end
