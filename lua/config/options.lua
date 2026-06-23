@@ -17,6 +17,9 @@ opt.smartcase = true
 
 opt.wrap = true
 
+-- カーソル位置の余白（画面端に到達する前にスクロール開始）
+opt.scrolloff = 6
+
 -- ビジュアル設定
 opt.showmode = false
 opt.showcmd = true
