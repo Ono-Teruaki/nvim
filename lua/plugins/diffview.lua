@@ -2,16 +2,20 @@ return {
     "sindrets/diffview.nvim",
     config = function()
         -- diffview-nvim
-        -- <leader>dv: ベースブランチを入力して diff（デフォルト develop、merge-base 起点）
-        -- 空のまま Enter で従来どおり作業ツリー差分（DiffviewOpen）
+        -- <leader>dv: 入力して diff（デフォルト develop、merge-base 起点）
+        --   空 Enter        -> 作業ツリー差分（DiffviewOpen）
+        --   単一ブランチ名  -> base...HEAD（例: develop -> develop...HEAD）
+        --   範囲指定(.. 含む) -> そのまま渡す（例: develop..SB-2651）
         vim.keymap.set("n", "<leader>dv", function()
-            local base = vim.fn.input("Base branch: ", "develop")
-            if base == "" then
+            local arg = vim.fn.input("Base branch / range: ", "develop")
+            if arg == "" then
                 vim.cmd("DiffviewOpen")
+            elseif arg:find("%.%.") then
+                vim.cmd("DiffviewOpen " .. arg)
             else
-                vim.cmd("DiffviewOpen " .. base .. "...HEAD")
+                vim.cmd("DiffviewOpen " .. arg .. "...HEAD")
             end
-        end, { desc = "Diffview (base branch / working tree)" })
+        end, { desc = "Diffview (base branch / range / working tree)" })
         vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", {})
     end
 }
