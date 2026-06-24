@@ -1,6 +1,12 @@
--- タブ体験の改善: 自作タブライン / リネーム
--- タブ切替は Neovim 0.11 組み込みの ]t(次) / [t(前) をそのまま使う（count 対応）。
+-- タブ体験の改善: タブ切替 / 自作タブライン / リネーム
 local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+-- タブ切替: ]t=次 / [t=前（タブページ移動）
+-- 注: Neovim 0.11 の組み込み ]t/[t は「タグ」移動(:tnext/:tprevious)で、
+--     タグスタックが空だと [t が E73 を出す。ここでタブページ移動に上書きする。
+keymap("n", "]t", "<cmd>tabnext<CR>", opts)
+keymap("n", "[t", "<cmd>tabprevious<CR>", opts)
 
 -- タブの表示名を決定する。
 -- 優先順: vim.t(tabname) のカスタム名 > diffview 判定 > バッファのファイル名
