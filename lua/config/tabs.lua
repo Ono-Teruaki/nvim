@@ -2,13 +2,10 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- タブ切替: <S-Tab> を前置してから H=前 / L=次（<S-Tab>H / <S-Tab>L）
--- 素の H/L モーション（画面上端/下端へ）を潰さないための2キー操作。
--- 注: diffview のタブページ内では <S-Tab> が diffview のファイル前送り
---     (select_prev_entry, buffer-local) に取られるため、この前置切替は効かない。
---     diffview 内では <Tab>/<S-Tab> がそのままファイル前後送りとして機能する。
-keymap("n", "<S-Tab>H", "<cmd>tabprevious<CR>", opts)
-keymap("n", "<S-Tab>L", "<cmd>tabnext<CR>", opts)
+-- タブ切替: ]t=次 / [t=前（vim 慣用・unimpaired 風）
+-- diffview は [t/]t を使わないため diffview の内外で同じ操作。素の H/L モーションも温存。
+keymap("n", "]t", "<cmd>tabnext<CR>", opts)
+keymap("n", "[t", "<cmd>tabprevious<CR>", opts)
 
 -- タブの表示名を決定する。
 -- 優先順: vim.t(tabname) のカスタム名 > diffview 判定 > バッファのファイル名
