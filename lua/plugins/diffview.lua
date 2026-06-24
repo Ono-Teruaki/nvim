@@ -2,7 +2,6 @@ return {
     "sindrets/diffview.nvim",
     config = function()
         -- diffview-nvim
-        -- diffview-nvim
         vim.keymap.set("n", "<leader>dv", "<cmd>DiffviewOpen<CR>", {})
         vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", {})
         -- <leader>db: rev 範囲を入力して diff（デフォルト develop... = merge-base 起点 / PR 相当）
